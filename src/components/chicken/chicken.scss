@@ -1,5 +1,10 @@
 .chicken {
-  position: absolute;
+  left: 45%;
+  position: fixed;
+  top: 45%;
+
+  animation-duration: 1s;
+  animation-delay: 1s;
 
   img {
     height: auto;
