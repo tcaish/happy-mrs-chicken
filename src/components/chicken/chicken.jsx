@@ -4,19 +4,20 @@ import ChickenMouthOpenImage from '../../assets/images/chicken-mouth-open.png';
 import { animateCSS } from '../../exports/functions';
 import './chicken.scss';
 
-function Chicken({ mouthIsClosed = true, shouldAnimate = true }) {
+function Chicken({ firstLoad, mouthIsClosed, chickenShouldAnimate }) {
   const interval = useRef(null);
 
   // Makes the chicken bounce up and down
   useEffect(() => {
-    if (shouldAnimate) {
+    // If it should animate and it's not on first page load
+    if (chickenShouldAnimate && !firstLoad) {
       interval.current = setInterval(() => {
         animateCSS('.chicken', 'shakeY');
       }, 5000);
     } else {
       clearInterval(interval.current);
     }
-  }, [shouldAnimate]);
+  }, [chickenShouldAnimate, firstLoad]);
 
   return (
     <div className="chicken">
