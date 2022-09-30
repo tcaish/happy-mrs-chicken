@@ -1,6 +1,7 @@
 import Chicken from './components/chicken/chicken';
 import Egg from './components/egg/egg';
 import './App.scss';
+import './exports/animations.scss';
 import 'animate.css';
 import Scoreboard from './components/scoreboard/scoreboard';
 import { useEffect, useState } from 'react';
@@ -8,6 +9,7 @@ import { animateCSS } from './exports/functions';
 
 function App() {
   const [firstLoad, setFirstLoad] = useState(true);
+  const [userClicked, setUserClicked] = useState(false);
 
   // Chicken states
   const [mouthIsClosed, setMouthIsClosed] = useState(true);
@@ -29,11 +31,22 @@ function App() {
     }
   }, [firstLoad]);
 
-  // Handles what happens when the chicken is clicked
-  function onChickenClicked() {}
+  // Handles what happens when the user clicks within the page
+  function handleClick() {
+    const chicken = document.querySelector('.chicken');
+    chicken.classList.remove(`animate__animated`, 'shakeY');
+
+    setChickenShouldAnimate(false);
+    setUserClicked(true);
+
+    animateCSS('.chicken', 'jump', false).then(() => {
+      setChickenShouldAnimate(true);
+      setUserClicked(false);
+    });
+  }
 
   return (
-    <div className="App">
+    <div className="App" onMouseDown={handleClick}>
       <Scoreboard firstLoad={firstLoad} score={score} />
       {/* <Egg /> */}
       <Chicken
