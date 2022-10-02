@@ -20,3 +20,17 @@ export const animateCSS = (element, animation, prefix = true) => {
     node.addEventListener('animationend', handleAnimationEnd, { once: true });
   });
 };
+
+// Moves an object from their current location to a new random location
+export const moveObjectToRandomLocation = (element) => {
+  function randomIntFromInterval(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
+  const randomVertical = randomIntFromInterval(0, 84);
+  const randomHorizontal = randomIntFromInterval(0, 89);
+
+  const node = document.querySelector(element);
+  node.style.setProperty('--random-vertical', `${randomVertical}%`);
+  node.style.setProperty('--random-horizontal', `${randomHorizontal}%`);
+};

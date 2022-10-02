@@ -5,7 +5,7 @@ import './exports/animations.scss';
 import 'animate.css';
 import Scoreboard from './components/scoreboard/scoreboard';
 import { useEffect, useState } from 'react';
-import { animateCSS } from './exports/functions';
+import { animateCSS, moveObjectToRandomLocation } from './exports/functions';
 
 function App() {
   const [firstLoad, setFirstLoad] = useState(true);
@@ -33,12 +33,17 @@ function App() {
 
   // Handles what happens when the user clicks within the page
   function handleClick() {
+    // Stop chicken's shaking animation
     const chicken = document.querySelector('.chicken');
     chicken.classList.remove(`animate__animated`, 'shakeY');
 
     setChickenShouldAnimate(false);
     setUserClicked(true);
 
+    // Move chicken to random location
+    moveObjectToRandomLocation('.chicken');
+
+    // Make chicken jump
     animateCSS('.chicken', 'jump', false).then(() => {
       setChickenShouldAnimate(true);
       setUserClicked(false);
