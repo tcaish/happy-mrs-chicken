@@ -40,6 +40,7 @@ function App() {
         });
       });
       animateCSS('.scoreboard', 'backInLeft');
+      animateCSS('.play-button', 'backInUp');
     }
   }, [firstLoad]);
 

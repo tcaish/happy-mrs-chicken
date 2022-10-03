@@ -1,0 +1,26 @@
+@import '../../exports/constants.scss';
+
+.play-button {
+  animation-delay: 1.3s;
+  background-color: black;
+  border-radius: 10px;
+  color: $chicken-color;
+  cursor: pointer;
+  font-size: xx-large;
+  font-weight: 500;
+  height: auto;
+  left: 43.8%;
+  padding-bottom: 10px;
+  position: absolute;
+  text-align: center;
+  top: 59%;
+  width: 200px;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  h1 {
+    margin: unset;
+  }
+}
