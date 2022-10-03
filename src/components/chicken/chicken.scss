@@ -1,7 +1,7 @@
 .chicken {
-  left: var(--random-horizontal);
+  left: var(--chicken-horizontal);
   position: fixed;
-  top: var(--random-vertical);
+  top: var(--chicken-vertical);
 
   animation-duration: 1s;
   animation-delay: 1s;

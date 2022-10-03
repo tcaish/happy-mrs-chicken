@@ -2,7 +2,10 @@ import Chicken from './components/chicken/chicken';
 import Egg from './components/egg/egg';
 import Scoreboard from './components/scoreboard/scoreboard';
 import { useEffect, useState } from 'react';
-import { animateCSS, moveObjectToRandomLocation } from './exports/functions';
+import {
+  animateCSS,
+  moveChickenToRandomLocationAndLayEgg
+} from './exports/functions';
 import FartSound from './assets/sounds/fart.mp3';
 import ChickenMouthClosedImage from './assets/images/chicken-mouth-closed.png';
 import ChickenMouthOpenImage from './assets/images/chicken-mouth-open.png';
@@ -16,7 +19,6 @@ function App() {
 
   // Chicken states
   const [chickenImage, setChickenImage] = useState(ChickenMouthClosedImage);
-  const [mouthIsClosed, setMouthIsClosed] = useState(true);
   const [chickenShouldAnimate, setChickenShouldAnimate] = useState(false);
 
   // Scoreboard states
@@ -66,7 +68,7 @@ function App() {
     setUserClicked(true);
 
     // Move chicken to random location
-    moveObjectToRandomLocation('.chicken');
+    moveChickenToRandomLocationAndLayEgg();
 
     // Make chicken fart
     const audio = new Audio(FartSound);

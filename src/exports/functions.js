@@ -22,15 +22,24 @@ export const animateCSS = (element, animation, prefix = true) => {
 };
 
 // Moves an object from their current location to a new random location
-export const moveObjectToRandomLocation = (element) => {
+export const moveChickenToRandomLocationAndLayEgg = () => {
   function randomIntFromInterval(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
-  const randomVertical = randomIntFromInterval(0, 84);
-  const randomHorizontal = randomIntFromInterval(0, 89);
+  function getRandomLocations() {
+    return [randomIntFromInterval(0, 84), randomIntFromInterval(0, 89)];
+  }
 
-  const node = document.querySelector(element);
-  node.style.setProperty('--random-vertical', `${randomVertical}%`);
-  node.style.setProperty('--random-horizontal', `${randomHorizontal}%`);
+  let [randomVertical, randomHorizontal] = getRandomLocations();
+
+  // Get new random locations so we don't collide with scoreboard
+  while (randomVertical < 6 && randomHorizontal > 81)
+    [randomVertical, randomHorizontal] = getRandomLocations();
+
+  const chicken = document.querySelector('.chicken');
+  chicken.style.setProperty('--chicken-vertical', `${randomVertical}%`);
+  chicken.style.setProperty('--chicken-horizontal', `${randomHorizontal}%`);
+
+  // Lay egg at same location as chicken
 };
