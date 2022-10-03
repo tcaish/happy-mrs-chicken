@@ -45,7 +45,10 @@ function App() {
     if (chickenShouldAnimate && !firstLoad) {
       interval.current = setInterval(() => {
         const chicken = document.querySelector('.chicken');
-        if (!chicken.classList.contains('animate__shakeY'))
+        if (
+          !chicken.classList.contains('animate__shakeY') &&
+          !chicken.classList.contains('jump')
+        )
           animateCSS('.chicken', 'shakeY');
       }, 6000);
     } else {
