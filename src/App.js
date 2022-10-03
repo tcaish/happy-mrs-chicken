@@ -7,6 +7,7 @@ import {
   moveChickenToRandomLocationAndLayEgg
 } from './exports/functions';
 import FartSound from './assets/sounds/fart.mp3';
+import ThemeSong from './assets/sounds/happy-mrs-chicken-song.mp3';
 import ChickenMouthClosedImage from './assets/images/chicken-mouth-closed.png';
 import ChickenMouthOpenImage from './assets/images/chicken-mouth-open.png';
 import './App.scss';
@@ -14,6 +15,7 @@ import './exports/animations.scss';
 import 'animate.css';
 
 function App() {
+  const themeAudio = new Audio(ThemeSong);
   const [firstLoad, setFirstLoad] = useState(true);
   const [userClicked, setUserClicked] = useState(false);
 
@@ -55,6 +57,27 @@ function App() {
       clearInterval(interval.current);
     }
   }, [chickenShouldAnimate, firstLoad]);
+
+  // Handles playing the theme music
+  function handlePlayThemeMusic() {
+    console.log(themeAudio.paused);
+    if (!themeAudio.paused) return;
+    themeAudio.play();
+
+    // Set up infinite loop of music
+    if (typeof themeAudio.loop == 'boolean') {
+      themeAudio.loop = true;
+    } else {
+      themeAudio.addEventListener(
+        'ended',
+        function () {
+          this.currentTime = 0;
+          this.play();
+        },
+        false
+      );
+    }
+  }
 
   // When user clicks, this sets chicken image to mouth open, then changes it
   // back before jump animation ends.
