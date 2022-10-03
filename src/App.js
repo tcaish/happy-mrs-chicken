@@ -1,7 +1,7 @@
 import Chicken from './components/chicken/chicken';
 import Egg from './components/egg/egg';
 import Scoreboard from './components/scoreboard/scoreboard';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   animateCSS,
   moveChickenToRandomLocationAndLayEgg
@@ -18,6 +18,7 @@ function App() {
   const [userClicked, setUserClicked] = useState(false);
 
   // Chicken states
+  const interval = useRef(null);
   const [chickenImage, setChickenImage] = useState(ChickenMouthClosedImage);
   const [chickenShouldAnimate, setChickenShouldAnimate] = useState(false);
 
@@ -37,6 +38,20 @@ function App() {
       animateCSS('.scoreboard', 'backInLeft');
     }
   }, [firstLoad]);
+
+  // Makes the chicken bounce up and down
+  useEffect(() => {
+    // If it should animate and it's not on first page load
+    if (chickenShouldAnimate && !firstLoad) {
+      interval.current = setInterval(() => {
+        const chicken = document.querySelector('.chicken');
+        if (!chicken.classList.contains('animate__shakeY'))
+          animateCSS('.chicken', 'shakeY');
+      }, 6000);
+    } else {
+      clearInterval(interval.current);
+    }
+  }, [chickenShouldAnimate, firstLoad]);
 
   // When user clicks, this sets chicken image to mouth open, then changes it
   // back before jump animation ends.
