@@ -4,6 +4,8 @@ import Scoreboard from './components/scoreboard/scoreboard';
 import { useEffect, useState } from 'react';
 import { animateCSS, moveObjectToRandomLocation } from './exports/functions';
 import FartSound from './assets/sounds/fart.mp3';
+import ChickenMouthClosedImage from './assets/images/chicken-mouth-closed.png';
+import ChickenMouthOpenImage from './assets/images/chicken-mouth-open.png';
 import './App.scss';
 import './exports/animations.scss';
 import 'animate.css';
@@ -13,11 +15,13 @@ function App() {
   const [userClicked, setUserClicked] = useState(false);
 
   // Chicken states
+  const [chickenImage, setChickenImage] = useState(ChickenMouthClosedImage);
   const [mouthIsClosed, setMouthIsClosed] = useState(true);
   const [chickenShouldAnimate, setChickenShouldAnimate] = useState(false);
 
   // Scoreboard states
-  const [score, setScore] = useState('000');
+  const [score, setScore] = useState(0);
+  const [scoreText, setScoreText] = useState('000');
 
   // On first page load, do special animations
   useEffect(() => {
@@ -32,13 +36,31 @@ function App() {
     }
   }, [firstLoad]);
 
+  // When user clicks, this sets chicken image to mouth open, then changes it
+  // back before jump animation ends.
+  function handleChickenImageOnClick() {
+    setChickenImage(ChickenMouthOpenImage);
+    setTimeout(() => setChickenImage(ChickenMouthClosedImage), 300);
+  }
+
+  // Update the scoreboard
+  function updateScoreboard() {
+    const newScore = score + 1;
+
+    if (newScore < 10) setScoreText(`00${newScore}`);
+    else if (newScore < 100) setScoreText(`0${newScore}`);
+    else setScoreText(`${newScore}`);
+
+    setScore(newScore);
+  }
+
   // Handles what happens when the user clicks within the page
   function handleClick() {
     if (userClicked) return;
 
     // Stop chicken's shaking animation
     const chicken = document.querySelector('.chicken');
-    chicken.classList.remove(`animate__animated`, 'animate__shakeY', 'jump');
+    chicken.classList.remove(`animate__animated`, 'animate__shakeY');
 
     setChickenShouldAnimate(false);
     setUserClicked(true);
@@ -50,6 +72,12 @@ function App() {
     const audio = new Audio(FartSound);
     audio.play();
 
+    // Change chicken image to mouth open
+    handleChickenImageOnClick();
+
+    // Update the scoreboard
+    updateScoreboard();
+
     // Make chicken jump
     animateCSS('.chicken', 'jump', false).then(() => {
       setChickenShouldAnimate(true);
@@ -59,11 +87,11 @@ function App() {
 
   return (
     <div className="App" onMouseDown={handleClick}>
-      <Scoreboard firstLoad={firstLoad} score={score} />
+      <Scoreboard firstLoad={firstLoad} scoreText={scoreText} />
       {/* <Egg /> */}
       <Chicken
         firstLoad={firstLoad}
-        mouthIsClosed={mouthIsClosed}
+        chickenImage={chickenImage}
         chickenShouldAnimate={chickenShouldAnimate}
       />
     </div>

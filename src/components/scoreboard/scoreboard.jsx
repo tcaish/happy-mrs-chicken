@@ -1,9 +1,9 @@
 import './scoreboard.scss';
 
-function Scoreboard({ score }) {
+function Scoreboard({ scoreText }) {
   return (
     <div className="scoreboard">
-      <span>{score}</span>
+      <span>{scoreText}</span>
     </div>
   );
 }
