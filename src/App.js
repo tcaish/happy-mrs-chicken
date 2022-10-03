@@ -35,7 +35,7 @@ function App() {
   function handleClick() {
     // Stop chicken's shaking animation
     const chicken = document.querySelector('.chicken');
-    chicken.classList.remove(`animate__animated`, 'shakeY');
+    chicken.classList.remove(`animate__animated`, 'animate__shakeY');
 
     setChickenShouldAnimate(false);
     setUserClicked(true);
