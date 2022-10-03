@@ -13,11 +13,13 @@ import ChickenMouthOpenImage from './assets/images/chicken-mouth-open.png';
 import './App.scss';
 import './exports/animations.scss';
 import 'animate.css';
+import PlayButton from './components/play-button/play-button';
 
 function App() {
   const themeAudio = new Audio(ThemeSong);
   const [firstLoad, setFirstLoad] = useState(true);
   const [userClicked, setUserClicked] = useState(false);
+  const [playButtonClicked, setPlayButtonClicked] = useState(false);
 
   // Chicken states
   const interval = useRef(null);
@@ -58,9 +60,14 @@ function App() {
     }
   }, [chickenShouldAnimate, firstLoad]);
 
+  // Play theme music once play button is clicked
+  useEffect(() => {
+    if (playButtonClicked) handlePlayThemeMusic();
+    // eslint-disable-next-line
+  }, [playButtonClicked]);
+
   // Handles playing the theme music
   function handlePlayThemeMusic() {
-    console.log(themeAudio.paused);
     if (!themeAudio.paused) return;
     themeAudio.play();
 
@@ -99,7 +106,7 @@ function App() {
 
   // Handles what happens when the user clicks within the page
   function handleClick() {
-    if (userClicked) return;
+    if (userClicked || !playButtonClicked) return;
 
     // Stop chicken's shaking animation
     const chicken = document.querySelector('.chicken');
@@ -131,12 +138,15 @@ function App() {
   return (
     <div className="App" onMouseDown={handleClick}>
       <Scoreboard firstLoad={firstLoad} scoreText={scoreText} />
-      {/* <Egg /> */}
       <Chicken
         firstLoad={firstLoad}
         chickenImage={chickenImage}
         chickenShouldAnimate={chickenShouldAnimate}
       />
+
+      {!playButtonClicked && (
+        <PlayButton setPlayButtonClicked={setPlayButtonClicked} />
+      )}
     </div>
   );
 }
