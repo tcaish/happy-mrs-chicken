@@ -34,7 +34,7 @@ export const moveChickenToRandomLocationAndLayEgg = () => {
   let [randomVertical, randomHorizontal] = getRandomLocations();
 
   // Get new random locations so we don't collide with scoreboard
-  while (randomVertical < 6 && randomHorizontal > 81)
+  while (randomVertical < 13 && randomHorizontal > 81)
     [randomVertical, randomHorizontal] = getRandomLocations();
 
   const chicken = document.querySelector('.chicken');
