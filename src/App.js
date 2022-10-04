@@ -52,6 +52,7 @@ function App() {
         });
       });
       animateCSS('.scoreboard', 'backInLeft');
+      animateCSS('.sound-button', 'backInRight');
       animateCSS('.play-button', 'backInUp');
     }
   }, [firstLoad]);
