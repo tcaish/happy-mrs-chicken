@@ -43,3 +43,12 @@ export const moveChickenToRandomLocationAndLayEgg = () => {
 
   // Lay egg at same location as chicken
 };
+
+// Detects if the user is clicking in the space they're not allowed to click
+// (i.e. the scoreboard and sound button)
+export function isMouseClickOutOfBounds(e) {
+  const x = e.clientX;
+  const y = e.clientY;
+  const screenWidth = window.innerWidth;
+  return x <= screenWidth && x >= screenWidth - 200 && y >= 0 && y <= 160;
+}

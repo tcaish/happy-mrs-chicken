@@ -4,6 +4,7 @@ import Scoreboard from './components/scoreboard/scoreboard';
 import { useEffect, useRef, useState } from 'react';
 import {
   animateCSS,
+  isMouseClickOutOfBounds,
   moveChickenToRandomLocationAndLayEgg
 } from './exports/functions';
 import FartSound from './assets/sounds/fart.mp3';
@@ -101,8 +102,8 @@ function App() {
   }
 
   // Handles what happens when the user clicks within the page
-  function handleClick() {
-    if (userClicked || !playButtonClicked) return;
+  function handleClick(e) {
+    if (userClicked || !playButtonClicked || isMouseClickOutOfBounds(e)) return;
 
     // Stop chicken's shaking animation
     const chicken = document.querySelector('.chicken');
