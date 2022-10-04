@@ -19,7 +19,9 @@ import SoundButton from './components/sound-button/sound-button';
 import useSound from 'use-sound';
 
 function App() {
-  const [playThemeSong, themeSongMethods] = useSound(ThemeSong);
+  const [playThemeSong, themeSongMethods] = useSound(ThemeSong, {
+    onend: () => setSoundOn(false)
+  });
   const [firstLoad, setFirstLoad] = useState(true);
   const [userClicked, setUserClicked] = useState(false);
 
