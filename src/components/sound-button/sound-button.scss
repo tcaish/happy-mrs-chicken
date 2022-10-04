@@ -1,0 +1,15 @@
+.sound-button {
+  cursor: pointer;
+  right: 30px;
+  position: absolute;
+  top: 8%;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  svg {
+    width: 60px;
+    height: auto;
+  }
+}

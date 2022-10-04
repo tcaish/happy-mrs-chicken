@@ -14,12 +14,13 @@ import './App.scss';
 import './exports/animations.scss';
 import 'animate.css';
 import PlayButton from './components/play-button/play-button';
+import SoundButton from './components/sound-button/sound-button';
+import useSound from 'use-sound';
 
 function App() {
-  const themeAudio = new Audio(ThemeSong);
+  const [playThemeSong, themeSongMethods] = useSound(ThemeSong);
   const [firstLoad, setFirstLoad] = useState(true);
   const [userClicked, setUserClicked] = useState(false);
-  const [playButtonClicked, setPlayButtonClicked] = useState(false);
 
   // Chicken states
   const interval = useRef(null);
@@ -29,6 +30,12 @@ function App() {
   // Scoreboard states
   const [score, setScore] = useState(0);
   const [scoreText, setScoreText] = useState('000');
+
+  // Play button states
+  const [playButtonClicked, setPlayButtonClicked] = useState(false);
+
+  // Sound button states
+  const [soundOn, setSoundOn] = useState(true);
 
   // On first page load, do special animations
   useEffect(() => {
@@ -63,29 +70,17 @@ function App() {
 
   // Play theme music once play button is clicked
   useEffect(() => {
-    if (playButtonClicked) handlePlayThemeMusic();
+    if (playButtonClicked) playThemeSong();
     // eslint-disable-next-line
   }, [playButtonClicked]);
 
-  // Handles playing the theme music
-  function handlePlayThemeMusic() {
-    if (!themeAudio.paused) return;
-    themeAudio.play();
-
-    // Set up infinite loop of music
-    if (typeof themeAudio.loop == 'boolean') {
-      themeAudio.loop = true;
-    } else {
-      themeAudio.addEventListener(
-        'ended',
-        function () {
-          this.currentTime = 0;
-          this.play();
-        },
-        false
-      );
+  // Play and pause theme music when sound button is toggled
+  useEffect(() => {
+    if (playButtonClicked) {
+      soundOn ? playThemeSong() : themeSongMethods.pause();
     }
-  }
+    // eslint-disable-next-line
+  }, [soundOn, playButtonClicked]);
 
   // When user clicks, this sets chicken image to mouth open, then changes it
   // back before jump animation ends.
@@ -144,6 +139,7 @@ function App() {
         chickenImage={chickenImage}
         chickenShouldAnimate={chickenShouldAnimate}
       />
+      <SoundButton soundOn={soundOn} setSoundOn={setSoundOn} />
 
       {!playButtonClicked && (
         <PlayButton setPlayButtonClicked={setPlayButtonClicked} />
