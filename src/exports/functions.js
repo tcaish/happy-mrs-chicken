@@ -1,3 +1,5 @@
+import Egg from '../components/egg/egg';
+
 // Animates an element based on animate.css
 export const animateCSS = (element, animation, prefix = true) => {
   // We create a Promise and return it
@@ -22,7 +24,7 @@ export const animateCSS = (element, animation, prefix = true) => {
 };
 
 // Moves an object from their current location to a new random location
-export const moveChickenToRandomLocationAndLayEgg = () => {
+export const moveChickenToRandomLocationAndLayEgg = (eggs, setEggs) => {
   function randomIntFromInterval(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
@@ -42,6 +44,15 @@ export const moveChickenToRandomLocationAndLayEgg = () => {
   chicken.style.setProperty('--chicken-horizontal', `${randomHorizontal}%`);
 
   // Lay egg at same location as chicken
+  setEggs([
+    ...eggs,
+    <Egg
+      style={{
+        top: `${randomVertical + 4}%`,
+        left: `${randomHorizontal + 2.4}%`
+      }}
+    />
+  ]);
 };
 
 // Detects if the user is clicking in the space they're not allowed to click

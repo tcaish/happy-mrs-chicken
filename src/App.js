@@ -1,5 +1,4 @@
 import Chicken from './components/chicken/chicken';
-import Egg from './components/egg/egg';
 import Scoreboard from './components/scoreboard/scoreboard';
 import { useEffect, useRef, useState } from 'react';
 import {
@@ -29,6 +28,9 @@ function App() {
   const interval = useRef(null);
   const [chickenImage, setChickenImage] = useState(ChickenMouthClosedImage);
   const [chickenShouldAnimate, setChickenShouldAnimate] = useState(false);
+
+  // Egg states
+  const [eggs, setEggs] = useState([]);
 
   // Scoreboard states
   const [score, setScore] = useState(0);
@@ -115,7 +117,7 @@ function App() {
     setUserClicked(true);
 
     // Move chicken to random location
-    moveChickenToRandomLocationAndLayEgg();
+    moveChickenToRandomLocationAndLayEgg(eggs, setEggs);
 
     // Make chicken fart
     const audio = new Audio(FartSound);
@@ -136,13 +138,16 @@ function App() {
 
   return (
     <div className="App" onMouseDown={handleClick}>
+      {eggs.map((egg) => egg)}
+
       <Scoreboard firstLoad={firstLoad} scoreText={scoreText} />
+      <SoundButton soundOn={soundOn} setSoundOn={setSoundOn} />
+
       <Chicken
         firstLoad={firstLoad}
         chickenImage={chickenImage}
         chickenShouldAnimate={chickenShouldAnimate}
       />
-      <SoundButton soundOn={soundOn} setSoundOn={setSoundOn} />
 
       {!playButtonClicked && (
         <PlayButton setPlayButtonClicked={setPlayButtonClicked} />

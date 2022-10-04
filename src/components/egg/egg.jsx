@@ -1,7 +1,7 @@
 import './egg.scss';
 
-function Egg() {
-  return <div className="egg"></div>;
+function Egg({ style }) {
+  return <div className="egg" style={style}></div>;
 }
 
 export default Egg;
