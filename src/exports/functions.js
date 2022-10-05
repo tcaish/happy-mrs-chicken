@@ -30,18 +30,21 @@ export const moveChickenToRandomLocationAndLayEgg = (eggs, setEggs) => {
   }
 
   function getRandomLocations() {
-    return [randomIntFromInterval(0, 84), randomIntFromInterval(0, 89)];
+    return [
+      randomIntFromInterval(0, window.innerHeight - 148),
+      randomIntFromInterval(0, window.innerWidth - 151)
+    ];
   }
 
   let [randomVertical, randomHorizontal] = getRandomLocations();
 
   // Get new random locations so we don't collide with scoreboard
-  while (randomVertical < 13 && randomHorizontal > 81)
+  while (randomVertical < 180 && randomHorizontal > window.innerWidth - 200)
     [randomVertical, randomHorizontal] = getRandomLocations();
 
   const chicken = document.querySelector('.chicken');
-  chicken.style.setProperty('--chicken-vertical', `${randomVertical}%`);
-  chicken.style.setProperty('--chicken-horizontal', `${randomHorizontal}%`);
+  chicken.style.setProperty('--chicken-vertical', `${randomVertical}px`);
+  chicken.style.setProperty('--chicken-horizontal', `${randomHorizontal}px`);
 
   // Lay egg at same location as chicken
   setEggs([
@@ -49,8 +52,8 @@ export const moveChickenToRandomLocationAndLayEgg = (eggs, setEggs) => {
     <Egg
       key={eggs.length + 1}
       style={{
-        top: `${randomVertical + 4}%`,
-        left: `${randomHorizontal + 2.4}%`
+        top: `${randomVertical + 46}px`,
+        left: `${randomHorizontal + 43}px`
       }}
     />
   ]);
