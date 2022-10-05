@@ -37,6 +37,7 @@ function App() {
   const [scoreText, setScoreText] = useState('000');
 
   // Play button states
+  const [canClickPlayButton, setCanClickPlayButton] = useState(false);
   const [playButtonClicked, setPlayButtonClicked] = useState(false);
 
   // Sound button states
@@ -46,14 +47,16 @@ function App() {
   useEffect(() => {
     if (firstLoad) {
       animateCSS('.chicken', 'backInDown').then(() => {
-        animateCSS('.chicken', 'shakeY').then(() => {
-          setFirstLoad(false);
-          setChickenShouldAnimate(true);
-        });
+        animateCSS('.chicken', 'shakeY').then(() =>
+          setChickenShouldAnimate(true)
+        );
       });
       animateCSS('.scoreboard', 'backInLeft');
       animateCSS('.sound-button', 'backInRight');
-      animateCSS('.play-button', 'backInUp');
+      animateCSS('.play-button', 'backInUp').then(() => {
+        setFirstLoad(false);
+        setCanClickPlayButton(true);
+      });
     }
   }, [firstLoad]);
 
@@ -144,14 +147,14 @@ function App() {
       <Scoreboard firstLoad={firstLoad} scoreText={scoreText} />
       <SoundButton soundOn={soundOn} setSoundOn={setSoundOn} />
 
-      <Chicken
-        firstLoad={firstLoad}
-        chickenImage={chickenImage}
-        chickenShouldAnimate={chickenShouldAnimate}
-      />
+      <Chicken firstLoad={firstLoad} chickenImage={chickenImage} />
 
       {!playButtonClicked && (
-        <PlayButton setPlayButtonClicked={setPlayButtonClicked} />
+        <PlayButton
+          firstLoad={firstLoad}
+          setPlayButtonClicked={setPlayButtonClicked}
+          canClickPlayButton={canClickPlayButton}
+        />
       )}
     </div>
   );
