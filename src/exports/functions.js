@@ -47,6 +47,7 @@ export const moveChickenToRandomLocationAndLayEgg = (eggs, setEggs) => {
   setEggs([
     ...eggs,
     <Egg
+      key={eggs.length + 1}
       style={{
         top: `${randomVertical + 4}%`,
         left: `${randomHorizontal + 2.4}%`

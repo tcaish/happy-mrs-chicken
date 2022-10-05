@@ -19,3 +19,62 @@
   animation-duration: 400ms;
   animation-iteration-count: 1;
 }
+
+@keyframes egg-wobble {
+  0% {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+  }
+  15% {
+    -webkit-transform: translateX(-15px) rotate(-6deg);
+    transform: translateX(-15px) rotate(-6deg);
+  }
+  30% {
+    -webkit-transform: translateX(7px) rotate(6deg);
+    transform: translateX(7px) rotate(6deg);
+  }
+  45% {
+    -webkit-transform: translateX(-7px) rotate(-3.6deg);
+    transform: translateX(-7px) rotate(-3.6deg);
+  }
+  60% {
+    -webkit-transform: translateX(5px) rotate(2.4deg);
+    transform: translateX(5px) rotate(2.4deg);
+  }
+  75% {
+    -webkit-transform: translateX(-3px) rotate(-1.2deg);
+    transform: translateX(-3px) rotate(-1.2deg);
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+  }
+}
+
+.egg-wobble {
+  animation-name: egg-wobble;
+  animation-duration: 0.8s;
+  animation-delay: 1s;
+  animation-iteration-count: 3;
+}
+
+// @keyframes shrink {
+//   from {
+//     transform: scale(1);
+//   }
+//   to {
+//     transform: scale(0);
+//   }
+// }
+
+// .shrink {
+//   animation-name: shrink;
+//   animation-duration: 0.5s;
+//   animation-delay: 3.4s;
+//   animation-fill-mode: forwards;
+//   animation-iteration-count: 1;
+// }
