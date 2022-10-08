@@ -1,3 +1,4 @@
+import BabyChicken from '../components/baby-chicken/baby-chicken';
 import Egg from '../components/egg/egg';
 
 // Animates an element based on animate.css
@@ -24,7 +25,12 @@ export const animateCSS = (element, animation, prefix = true) => {
 };
 
 // Moves an object from their current location to a new random location
-export const moveChickenToRandomLocationAndLayEgg = (eggs, setEggs) => {
+export const moveChickenToRandomLocationAndLayEgg = (
+  eggs,
+  setEggs,
+  babyChickens,
+  setBabyChickens
+) => {
   function randomIntFromInterval(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
@@ -46,17 +52,26 @@ export const moveChickenToRandomLocationAndLayEgg = (eggs, setEggs) => {
   chicken.style.setProperty('--chicken-vertical', `${randomVertical}px`);
   chicken.style.setProperty('--chicken-horizontal', `${randomHorizontal}px`);
 
+  const style = {
+    top: `${randomVertical + 46}px`,
+    left: `${randomHorizontal + 43}px`
+  };
+
   // Lay egg at same location as chicken
-  const newLength = eggs.length + 1;
+  const newEggsLength = eggs.length + 1;
   setEggs([
     ...eggs,
-    <Egg
-      key={newLength}
-      id={`egg-${newLength}`}
-      style={{
-        top: `${randomVertical + 46}px`,
-        left: `${randomHorizontal + 43}px`
-      }}
+    <Egg key={newEggsLength} id={`egg-${newEggsLength}`} style={style} />
+  ]);
+
+  // Spawn baby chicken
+  const newBabyChickensLength = babyChickens.length + 1;
+  setBabyChickens([
+    ...babyChickens,
+    <BabyChicken
+      key={newBabyChickensLength}
+      id={`baby-chicken-${newBabyChickensLength}`}
+      style={style}
     />
   ]);
 };

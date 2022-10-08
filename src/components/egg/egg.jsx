@@ -4,12 +4,12 @@ import { animateCSS } from '../../exports/functions';
 import HatchSound from '../../assets/sounds/hatch.mp3';
 import './egg.scss';
 
-function Egg({ id, style }) {
+function Egg(props) {
   const [playHatchSound] = useSound(HatchSound);
 
   // Animate the egg
   useEffect(() => {
-    const eggId = `#${id}`;
+    const eggId = `#${props.id}`;
     const node = document.querySelector(eggId);
 
     // Wobble
@@ -21,9 +21,10 @@ function Egg({ id, style }) {
         node.parentElement.removeChild(node);
       });
     });
-  }, [id, playHatchSound]);
+    // eslint-disable-next-line
+  }, [props.id, playHatchSound]);
 
-  return <div id={id} className="egg" style={style}></div>;
+  return <div id={props.id} className="egg" style={props.style}></div>;
 }
 
 export default Egg;

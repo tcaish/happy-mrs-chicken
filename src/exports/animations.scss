@@ -78,3 +78,20 @@
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
 }
+
+@keyframes grow {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.grow {
+  animation-name: grow;
+  animation-duration: 0.5s;
+  animation-delay: 3.4s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}

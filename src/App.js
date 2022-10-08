@@ -21,6 +21,7 @@ function App() {
   const [playThemeSong, themeSongMethods] = useSound(ThemeSong, {
     onend: () => setSoundOn(false)
   });
+
   const [firstLoad, setFirstLoad] = useState(true);
   const [userClicked, setUserClicked] = useState(false);
 
@@ -28,6 +29,7 @@ function App() {
   const interval = useRef(null);
   const [chickenImage, setChickenImage] = useState(ChickenMouthClosedImage);
   const [chickenShouldAnimate, setChickenShouldAnimate] = useState(false);
+  const [babyChickens, setBabyChickens] = useState([]);
 
   // Egg states
   const [eggs, setEggs] = useState([]);
@@ -121,7 +123,12 @@ function App() {
     setUserClicked(true);
 
     // Move chicken to random location
-    moveChickenToRandomLocationAndLayEgg(eggs, setEggs);
+    moveChickenToRandomLocationAndLayEgg(
+      eggs,
+      setEggs,
+      babyChickens,
+      setBabyChickens
+    );
 
     // Make chicken fart
     const audio = new Audio(FartSound);
@@ -143,6 +150,7 @@ function App() {
   return (
     <div className="App" onMouseDown={handleClick}>
       {eggs.map((egg) => egg)}
+      {babyChickens.map((babyChicken) => babyChicken)}
 
       <Scoreboard firstLoad={firstLoad} scoreText={scoreText} />
       <SoundButton soundOn={soundOn} setSoundOn={setSoundOn} />
