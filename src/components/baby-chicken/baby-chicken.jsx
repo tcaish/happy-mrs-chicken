@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import ChickenImage from '../../assets/images/chicken-mouth-closed.png';
+import BabyChickenMouthClosedImage from '../../assets/images/baby-chicken-mouth-closed.png';
 import './baby-chicken.scss';
 
 function BabyChicken(props) {
@@ -15,7 +15,7 @@ function BabyChicken(props) {
 
   return (
     <div id={props.id} className="baby-chicken" style={props.style}>
-      <img src={ChickenImage} alt="Baby Chicken" />
+      <img src={BabyChickenMouthClosedImage} alt="Baby Chicken" />
     </div>
   );
 }
