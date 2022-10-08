@@ -47,10 +47,12 @@ export const moveChickenToRandomLocationAndLayEgg = (eggs, setEggs) => {
   chicken.style.setProperty('--chicken-horizontal', `${randomHorizontal}px`);
 
   // Lay egg at same location as chicken
+  const newLength = eggs.length + 1;
   setEggs([
     ...eggs,
     <Egg
-      key={eggs.length + 1}
+      key={newLength}
+      id={`egg-${newLength}`}
       style={{
         top: `${randomVertical + 46}px`,
         left: `${randomHorizontal + 43}px`
