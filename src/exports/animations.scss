@@ -62,19 +62,19 @@
   animation-iteration-count: 3;
 }
 
-// @keyframes shrink {
-//   from {
-//     transform: scale(1);
-//   }
-//   to {
-//     transform: scale(0);
-//   }
-// }
+@keyframes shrink {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
+}
 
-// .shrink {
-//   animation-name: shrink;
-//   animation-duration: 0.5s;
-//   animation-delay: 3.4s;
-//   animation-fill-mode: forwards;
-//   animation-iteration-count: 1;
-// }
+.shrink {
+  animation-name: shrink;
+  animation-duration: 0.5s;
+  animation-delay: 0s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
