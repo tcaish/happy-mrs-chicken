@@ -16,6 +16,7 @@ import 'animate.css';
 import PlayButton from './components/play-button/play-button';
 import SoundButton from './components/sound-button/sound-button';
 import useSound from 'use-sound';
+import BabyChicken from './components/baby-chicken/baby-chicken';
 
 function App() {
   const [playThemeSong, themeSongMethods] = useSound(ThemeSong, {

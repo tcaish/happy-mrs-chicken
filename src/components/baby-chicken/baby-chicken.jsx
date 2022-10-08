@@ -1,21 +1,37 @@
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import BabyChickenMouthClosedImage from '../../assets/images/baby-chicken-mouth-closed.png';
+import BabyChickenMouthOpenImage from '../../assets/images/baby-chicken-mouth-open.png';
 import './baby-chicken.scss';
 
 function BabyChicken(props) {
-  // Animate the egg
+  const interval = useRef(null);
+
+  const [isMouthClosed, setIsMouthClosed] = useState(true);
+
+  // Animate the baby chicken
   useEffect(() => {
     const babyId = `#${props.id}`;
-    const node = document.querySelector(babyId);
+    const babyChicken = document.querySelector(babyId);
 
     // Grow
-    node.classList.add('grow');
-    // animateCSS(babyId, 'grow', false).then(() => {});
-  }, [props.id]);
+    babyChicken.classList.add('grow');
+
+    // Change baby chicken image repeatedly
+    interval.current = setInterval(() => setIsMouthClosed(!isMouthClosed), 500);
+
+    return () => clearInterval(interval.current);
+  }, [props.id, isMouthClosed]);
 
   return (
     <div id={props.id} className="baby-chicken" style={props.style}>
-      <img src={BabyChickenMouthClosedImage} alt="Baby Chicken" />
+      <img
+        src={
+          isMouthClosed
+            ? BabyChickenMouthClosedImage
+            : BabyChickenMouthOpenImage
+        }
+        alt="Baby Chicken"
+      />
     </div>
   );
 }
