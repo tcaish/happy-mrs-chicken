@@ -18,7 +18,7 @@ function Egg(props) {
 
       // Shrink
       animateCSS(eggId, 'shrink', false).then(() => {
-        node.parentElement.removeChild(node);
+        node.parentElement && node.parentElement.removeChild(node);
       });
     });
     // eslint-disable-next-line
