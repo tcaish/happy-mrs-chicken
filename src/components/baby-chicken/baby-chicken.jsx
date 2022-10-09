@@ -25,7 +25,7 @@ function BabyChicken(props) {
     babyChicken.classList.add('grow-and-move-off-screen');
 
     // Change baby chicken image repeatedly
-    interval.current = setInterval(() => setIsMouthClosed(!isMouthClosed), 500);
+    interval.current = setInterval(() => setIsMouthClosed(!isMouthClosed), 300);
 
     return () => clearInterval(interval.current);
     //eslint-disable-next-line
