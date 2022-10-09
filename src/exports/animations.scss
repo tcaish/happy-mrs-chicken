@@ -2,6 +2,8 @@
   --chicken-vertical: 42%;
   --chicken-horizontal: 45%;
 
+  --baby-chicken-flip: -1;
+
   --egg-wobble-duration: 0.8s;
   --egg-wobble-delay: 1s;
   --egg-wobble-iteration: 3;
@@ -87,13 +89,14 @@
 
 @keyframes grow-and-move-off-screen {
   0% {
-    transform: translateX(0px) scale(0);
+    transform: translateX(0px) scale(0) scaleX(var(--baby-chicken-flip));
   }
   25% {
-    transform: translateX(0px) scale(1);
+    transform: translateX(0px) scale(1) scaleX(var(--baby-chicken-flip));
   }
   100% {
-    transform: translateX(var(--move-off-screen-direction));
+    transform: translateX(var(--move-off-screen-direction))
+      scaleX(var(--baby-chicken-flip));
   }
 }
 

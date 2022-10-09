@@ -15,11 +15,18 @@ function BabyChicken(props) {
     const babyChicken = document.querySelector(babyId);
 
     // Grow and move off screen
-    let direction = '100vw'; // Move to the right off-screen
+    let moveDirection = '100vw'; // Move to the right off-screen
+    let lookDirection = '1'; // Baby chicken looks to right side
     const isLeftSide = isBabyChickenOnLeftSide(props.style.left);
-    isLeftSide && (direction = '-100vw');
 
-    babyChicken.style.setProperty('--move-off-screen-direction', direction);
+    if (isLeftSide) {
+      moveDirection = '-100vw';
+    } else {
+      lookDirection = '-1';
+    }
+
+    babyChicken.style.setProperty('--move-off-screen-direction', moveDirection);
+    // babyChicken.style.setProperty('--baby-chicken-flip', lookDirection);
     babyChicken.classList.add('grow-and-move-off-screen');
 
     // Change baby chicken image repeatedly
