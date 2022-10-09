@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import BabyChickenMouthClosedImage from '../../assets/images/baby-chicken-mouth-closed.png';
 import BabyChickenMouthOpenImage from '../../assets/images/baby-chicken-mouth-open.png';
-import { animateCSS, isBabyChickenOnLeftSide } from '../../exports/functions';
+import { isBabyChickenOnLeftSide } from '../../exports/functions';
 import './baby-chicken.scss';
 
 function BabyChicken(props) {
@@ -25,6 +25,8 @@ function BabyChicken(props) {
   function animateBabyChicken(babyId) {
     const babyChicken = document.querySelector(babyId);
 
+    if (!babyChicken) return;
+
     let moveDirection = '100vw'; // Move to the right off-screen
     let lookDirection = '180deg'; // Baby chicken looks to right side
     const isLeftSide = isBabyChickenOnLeftSide(props.style.left);
@@ -33,7 +35,12 @@ function BabyChicken(props) {
     babyChicken.style.setProperty('--move-off-screen-direction', moveDirection);
     babyChicken.style.setProperty('--baby-chicken-flip', lookDirection);
     babyChicken.classList.add('grow-and-move-off-screen');
-    // animateCSS(babyId, 'grow-and-move-off-screen', false);
+
+    // Remove baby chicken after 13.4s
+    // setTimeout(() => {
+    //   babyChicken.parentElement &&
+    //     babyChicken.parentElement.removeChild(babyChicken);
+    // }, 13400);
   }
 
   return (
