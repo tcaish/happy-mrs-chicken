@@ -18,6 +18,7 @@ function Egg(props) {
 
       // Shrink
       animateCSS(eggId, 'shrink', false).then(() => {
+        // Remove egg from document
         node.parentElement && node.parentElement.removeChild(node);
       });
     });

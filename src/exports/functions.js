@@ -10,6 +10,8 @@ export const animateCSS = (element, animation, prefix = true) => {
     const animationName = prefix ? `${prefixText}${animation}` : `${animation}`;
     const node = document.querySelector(element);
 
+    if (!node) return;
+
     prefix && node.classList.add(`${prefixText}animated`);
     node.classList.add(animationName);
 
