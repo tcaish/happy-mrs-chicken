@@ -6,6 +6,7 @@ function Chicken({ firstLoad, chickenImage }) {
   useEffect(() => {
     if (firstLoad) {
       const chicken = document.querySelector('.chicken');
+
       // Divide by 2 to get top-left corner to middle of screen; subtract
       // width of chicken / 2 to get it in the middle
       chicken.style.setProperty(

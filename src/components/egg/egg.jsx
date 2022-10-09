@@ -13,7 +13,6 @@ function Egg(props) {
   // Animate the egg
   useEffect(() => {
     const eggId = `#${props.id}`;
-    const node = document.querySelector(eggId);
 
     // Wobble
     animateCSS(eggId, 'egg-wobble', false).then(() => {
@@ -23,7 +22,8 @@ function Egg(props) {
       // Shrink
       animateCSS(eggId, 'shrink', false).then(() => {
         // Remove egg from document
-        node.parentElement && node.parentElement.removeChild(node);
+        const node = document.querySelector(eggId);
+        node && node.parentElement.removeChild(node);
       });
     });
     // eslint-disable-next-line

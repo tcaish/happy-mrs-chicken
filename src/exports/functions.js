@@ -33,10 +33,12 @@ export const moveChickenToRandomLocationAndLayEgg = (
   babyChickens,
   setBabyChickens
 ) => {
+  // Returns a random integer between a given min and max limit
   function randomIntFromInterval(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
+  // Returns random top and left locations that will be used to move the chicken
   function getRandomLocations() {
     return [
       randomIntFromInterval(0, window.innerHeight - 148),

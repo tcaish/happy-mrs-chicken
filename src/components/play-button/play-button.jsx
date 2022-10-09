@@ -6,6 +6,7 @@ function PlayButton({ firstLoad, setPlayButtonClicked, canClickPlayButton }) {
   useEffect(() => {
     if (firstLoad) {
       const playButton = document.querySelector('.play-button');
+
       // Divide by 2 to get top-left corner to middle of screen; subtract
       // width of play button / 2 to get it in the middle; add 125 to get below
       // chicken

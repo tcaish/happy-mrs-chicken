@@ -10,17 +10,18 @@ import FartSound from './assets/sounds/fart.mp3';
 import ThemeSong from './assets/sounds/happy-mrs-chicken-song.mp3';
 import ChickenMouthClosedImage from './assets/images/chicken-mouth-closed.png';
 import ChickenMouthOpenImage from './assets/images/chicken-mouth-open.png';
-import './App.scss';
-import './exports/animations.scss';
-import 'animate.css';
 import PlayButton from './components/play-button/play-button';
 import SoundButton from './components/sound-button/sound-button';
 import useSound from 'use-sound';
+import './App.scss';
+import './exports/animations.scss';
+import 'animate.css';
 
 function App() {
   const [playThemeSong, themeSongMethods] = useSound(ThemeSong, {
     onend: () => setSoundOn(false)
   });
+  const [playFartSound] = useSound(FartSound);
 
   const [firstLoad, setFirstLoad] = useState(true);
   const [userClicked, setUserClicked] = useState(false);
@@ -45,7 +46,7 @@ function App() {
   // Sound button states
   const [soundOn, setSoundOn] = useState(true);
 
-  // On first page load, do special animations
+  // On first page load, do special animations for all objects on screen
   useEffect(() => {
     if (firstLoad) {
       animateCSS('.chicken', 'backInDown').then(() => {
@@ -81,7 +82,7 @@ function App() {
 
   // Play theme music once play button is clicked
   useEffect(() => {
-    if (playButtonClicked) playThemeSong();
+    playButtonClicked && playThemeSong();
     // eslint-disable-next-line
   }, [playButtonClicked]);
 
@@ -95,12 +96,12 @@ function App() {
 
   // When user clicks, this sets chicken image to mouth open, then changes it
   // back before jump animation ends.
-  function handleChickenImageOnClick() {
+  function changeChickenImageOnClick() {
     setChickenImage(ChickenMouthOpenImage);
     setTimeout(() => setChickenImage(ChickenMouthClosedImage), 300);
   }
 
-  // Update the scoreboard
+  // Update scoreboard to reflect new egg laid
   function updateScoreboard() {
     const newScore = score + 1;
 
@@ -112,7 +113,7 @@ function App() {
   }
 
   // Handles what happens when the user clicks within the page
-  function handleClick(e) {
+  function handleUserClick(e) {
     if (userClicked || !playButtonClicked || isMouseClickOutOfBounds(e)) return;
 
     // Stop chicken's shaking animation
@@ -122,7 +123,7 @@ function App() {
     setChickenShouldAnimate(false);
     setUserClicked(true);
 
-    // Move chicken to random location
+    // Move chicken to random location and lay an egg
     moveChickenToRandomLocationAndLayEgg(
       eggs,
       setEggs,
@@ -131,13 +132,12 @@ function App() {
     );
 
     // Make chicken fart
-    const audio = new Audio(FartSound);
-    audio.play();
+    playFartSound();
 
     // Change chicken image to mouth open
-    handleChickenImageOnClick();
+    changeChickenImageOnClick();
 
-    // Update the scoreboard
+    // Add one to the scoreboard
     updateScoreboard();
 
     // Make chicken jump
@@ -148,7 +148,7 @@ function App() {
   }
 
   return (
-    <div className="App" onMouseDown={handleClick}>
+    <div className="App" onMouseDown={handleUserClick}>
       {eggs.map((egg) => egg)}
       {babyChickens.map((babyChicken) => babyChicken)}
 

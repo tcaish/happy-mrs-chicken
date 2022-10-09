@@ -11,10 +11,20 @@ function BabyChicken(props) {
 
   // Animate the baby chicken
   useEffect(() => {
-    const babyId = `#${props.id}`;
+    // Grow and move off screen
+    animateBabyChicken(`#${props.id}`);
+
+    // Change baby chicken image repeatedly
+    interval.current = setInterval(() => setIsMouthClosed(!isMouthClosed), 300);
+
+    return () => clearInterval(interval.current);
+    //eslint-disable-next-line
+  }, [props.id, isMouthClosed]);
+
+  // Animates the baby chicken by making it grow and moving it off the screen
+  function animateBabyChicken(babyId) {
     const babyChicken = document.querySelector(babyId);
 
-    // Grow and move off screen
     let moveDirection = '100vw'; // Move to the right off-screen
     let lookDirection = '180deg'; // Baby chicken looks to right side
     const isLeftSide = isBabyChickenOnLeftSide(props.style.left);
@@ -23,13 +33,7 @@ function BabyChicken(props) {
     babyChicken.style.setProperty('--move-off-screen-direction', moveDirection);
     babyChicken.style.setProperty('--baby-chicken-flip', lookDirection);
     babyChicken.classList.add('grow-and-move-off-screen');
-
-    // Change baby chicken image repeatedly
-    interval.current = setInterval(() => setIsMouthClosed(!isMouthClosed), 300);
-
-    return () => clearInterval(interval.current);
-    //eslint-disable-next-line
-  }, [props.id, isMouthClosed]);
+  }
 
   return (
     <div id={props.id} className="baby-chicken" style={props.style}>
