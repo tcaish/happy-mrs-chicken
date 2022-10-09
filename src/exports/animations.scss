@@ -5,6 +5,8 @@
   --egg-wobble-duration: 0.8s;
   --egg-wobble-delay: 1s;
   --egg-wobble-iteration: 3;
+
+  --move-off-screen-direction: 100vw;
 }
 
 @keyframes jump {
@@ -83,18 +85,21 @@
   animation-iteration-count: 1;
 }
 
-@keyframes grow {
-  from {
-    transform: scale(0);
+@keyframes grow-and-move-off-screen {
+  0% {
+    transform: translateX(0px) scale(0);
   }
-  to {
-    transform: scale(1);
+  25% {
+    transform: translateX(0px) scale(1);
+  }
+  100% {
+    transform: translateX(var(--move-off-screen-direction));
   }
 }
 
-.grow {
-  animation-name: grow;
-  animation-duration: 0.5s;
+.grow-and-move-off-screen {
+  animation-name: grow-and-move-off-screen;
+  animation-duration: 8s;
   animation-delay: calc(
     var(--egg-wobble-duration) * var(--egg-wobble-iteration) +
       var(--egg-wobble-delay)

@@ -86,3 +86,11 @@ export function isMouseClickOutOfBounds(e) {
   const screenWidth = window.innerWidth;
   return x <= screenWidth && x >= screenWidth - 200 && y >= 0 && y <= 160;
 }
+
+// Calculates whether or not the baby chicken spawned on the left side of the
+// screen.
+export function isBabyChickenOnLeftSide(styleLeft) {
+  const halfOfScreenWidth = window.innerWidth / 2;
+  const styleLeftNumber = parseFloat(styleLeft.split('px')[0]);
+  return styleLeftNumber <= halfOfScreenWidth;
+}
