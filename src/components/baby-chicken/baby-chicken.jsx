@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import BabyChickenMouthClosedImage from '../../assets/images/baby-chicken-mouth-closed.png';
 import BabyChickenMouthOpenImage from '../../assets/images/baby-chicken-mouth-open.png';
-import { isBabyChickenOnLeftSide } from '../../exports/functions';
+import { animateCSS, isBabyChickenOnLeftSide } from '../../exports/functions';
 import './baby-chicken.scss';
 
 function BabyChicken(props) {
@@ -33,6 +33,7 @@ function BabyChicken(props) {
     babyChicken.style.setProperty('--move-off-screen-direction', moveDirection);
     babyChicken.style.setProperty('--baby-chicken-flip', lookDirection);
     babyChicken.classList.add('grow-and-move-off-screen');
+    // animateCSS(babyId, 'grow-and-move-off-screen', false);
   }
 
   return (
