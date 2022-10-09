@@ -2,7 +2,7 @@
   --chicken-vertical: 42%;
   --chicken-horizontal: 45%;
 
-  --baby-chicken-flip: -1;
+  --baby-chicken-flip: 0deg;
 
   --egg-wobble-duration: 0.8s;
   --egg-wobble-delay: 1s;
@@ -89,20 +89,20 @@
 
 @keyframes grow-and-move-off-screen {
   0% {
-    transform: translateX(0px) scale(0) scaleX(var(--baby-chicken-flip));
+    transform: translateX(0px) scale(0) rotateY(var(--baby-chicken-flip));
   }
-  25% {
-    transform: translateX(0px) scale(1) scaleX(var(--baby-chicken-flip));
+  10% {
+    transform: translateX(0px) scale(1) rotateY(var(--baby-chicken-flip));
   }
   100% {
     transform: translateX(var(--move-off-screen-direction))
-      scaleX(var(--baby-chicken-flip));
+      rotateY(var(--baby-chicken-flip));
   }
 }
 
 .grow-and-move-off-screen {
   animation-name: grow-and-move-off-screen;
-  animation-duration: 8s;
+  animation-duration: 10s;
   animation-delay: calc(
     var(--egg-wobble-duration) * var(--egg-wobble-iteration) +
       var(--egg-wobble-delay)
