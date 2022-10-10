@@ -1,5 +1,11 @@
 @import './exports/constants.scss';
 
+@font-face {
+  font-family: 'PartyConfetti';
+  src: local('PartyConfetti'),
+    url(./assets/fonts/PartyConfetti.ttf) format('opentype');
+}
+
 body {
   background-color: $background-color;
   margin: 0;

@@ -6,10 +6,10 @@
   border-radius: 45px;
   color: $chicken-color;
   cursor: pointer;
+  font-family: 'PartyConfetti';
   font-size: xx-large;
   font-weight: 500;
   height: auto;
-  padding-bottom: 10px;
   position: absolute;
   text-align: center;
   width: 200px;
@@ -20,5 +20,6 @@
 
   h1 {
     margin: unset;
+    padding-top: 5px;
   }
 }
