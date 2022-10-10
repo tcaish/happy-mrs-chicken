@@ -13,16 +13,16 @@ function ScoreReached({ scoreReached, setShowScoreReached }) {
     // Fade in
     animateCSS('.score-reached', 'fadeInDown', true).then(() => {
       // Fade out after 2.5 seconds
-      // setTimeout(
-      //   () =>
-      //     animateCSS('.score-reached', 'fadeOutUp', true).then(() => {
-      //       // Remove score reached component from view
-      //       const scoreReachedNode = document.querySelector('.score-reached');
-      //       scoreReachedNode.style.setProperty('display', 'none');
-      //       setShowScoreReached(false);
-      //     }),
-      //   2500
-      // );
+      setTimeout(
+        () =>
+          animateCSS('.score-reached', 'fadeOutUp', true).then(() => {
+            // Remove score reached component from view
+            const scoreReachedNode = document.querySelector('.score-reached');
+            scoreReachedNode.style.setProperty('display', 'none');
+            setShowScoreReached(false);
+          }),
+        2500
+      );
     });
   }, [setShowScoreReached]);
 
