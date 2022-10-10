@@ -27,10 +27,10 @@ function BabyChicken(props) {
 
     if (!babyChicken) return;
 
-    let moveDirection = '60vw'; // Move to the right off-screen
+    let moveDirection = '70vw'; // Move to the right off-screen
     let lookDirection = '180deg'; // Baby chicken looks to right side
     const isLeftSide = isBabyChickenOnLeftSide(props.style.left);
-    isLeftSide && (moveDirection = '-60vw') && (lookDirection = '0deg');
+    isLeftSide && (moveDirection = '-70vw') && (lookDirection = '0deg');
 
     babyChicken.style.setProperty('--move-off-screen-direction', moveDirection);
     babyChicken.style.setProperty('--baby-chicken-flip', lookDirection);
