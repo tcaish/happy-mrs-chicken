@@ -38,8 +38,8 @@ function App() {
   const [eggs, setEggs] = useState([]);
 
   // Scoreboard states
-  const [score, setScore] = useState(49);
-  const [scoreText, setScoreText] = useState('049');
+  const [score, setScore] = useState(0);
+  const [scoreText, setScoreText] = useState('000');
 
   // Play button states
   const [canClickPlayButton, setCanClickPlayButton] = useState(false);
