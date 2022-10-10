@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import './footer.scss';
+import './footer.mobile.scss';
 
 function Footer() {
   useEffect(() => {
