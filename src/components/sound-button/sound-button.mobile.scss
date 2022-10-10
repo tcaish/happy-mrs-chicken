@@ -1,11 +1,11 @@
 // Screen width 576px and under
 @media only screen and (max-width: 576px) {
-  .scoreboard {
+  .sound-button {
     right: 20px;
-    width: 120px;
+    top: 90px;
 
-    span {
-      font-size: 35px;
+    svg {
+      width: 50px;
     }
   }
 }
