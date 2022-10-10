@@ -16,6 +16,7 @@ import useSound from 'use-sound';
 import './App.scss';
 import './exports/animations.scss';
 import 'animate.css';
+import Footer from './components/footer/footer';
 
 function App() {
   const [playThemeSong, themeSongMethods] = useSound(ThemeSong, {
@@ -164,6 +165,8 @@ function App() {
           canClickPlayButton={canClickPlayButton}
         />
       )}
+
+      <Footer />
     </div>
   );
 }

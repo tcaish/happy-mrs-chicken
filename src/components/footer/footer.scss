@@ -1,0 +1,18 @@
+.footer {
+  bottom: 0;
+  position: absolute;
+  text-align: center;
+
+  p {
+    opacity: 0.3;
+  }
+
+  .footer-instructions {
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+
+  .footer-disclaimer {
+    margin-top: unset;
+  }
+}
