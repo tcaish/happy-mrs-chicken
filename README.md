@@ -24,6 +24,7 @@ you will be congratulated!
 ## Things I'd Like to Add/Update/Change
 - Update the egg to show it hatching before disappearing rather than it just disappearing
 - Figure out a way to remove the baby chickens from the DOM without causing a crash
+- Allow for user to click and have immediate response rather than there being a small wait between clicks
 
 ## Frameworks and Libraries
 
