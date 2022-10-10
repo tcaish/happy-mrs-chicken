@@ -178,12 +178,12 @@ function App() {
 
       <Footer />
 
-      {/* {showScoreReached && ( */}
-      <ScoreReached
-        scoreReached={scoreReached}
-        setShowScoreReached={setShowScoreReached}
-      />
-      {/* )} */}
+      {showScoreReached && (
+        <ScoreReached
+          scoreReached={scoreReached}
+          setShowScoreReached={setShowScoreReached}
+        />
+      )}
     </div>
   );
 }
