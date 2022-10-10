@@ -1,4 +1,5 @@
 import './scoreboard.scss';
+import './scoreboard.mobile.scss';
 
 function Scoreboard({ scoreText }) {
   return (
