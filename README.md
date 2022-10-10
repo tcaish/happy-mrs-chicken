@@ -9,7 +9,7 @@ show off my React skills!
 
 ## Demo
 
-<a href='https://happy-mrs-chicken.netlify.app' target='_blank'>https://happy-mrs-chicken.netlify.app</a>
+<a href='https://happy-mrs-chicken-game.netlify.app' target='_blank'>https://happy-mrs-chicken-game.netlify.app</a>
 
 To see the real game as made by the original creators, view 
 <a href='https://youtu.be/18vbpsOil_U?t=43' target='_blank'>this Youtube video</a>.
