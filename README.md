@@ -9,7 +9,10 @@ show off my React skills!
 
 ## Demo
 
-[https://happy-mrs-chicken.netlify.app](https://happy-mrs-chicken.netlify.app)
+<a href='https://happy-mrs-chicken.netlify.app' target='_blank' rel='noreferrer'>https://happy-mrs-chicken.netlify.app</a>
+
+To see the real game as made by the original creators, view 
+<a href='https://youtu.be/18vbpsOil_U?t=43' target='_blank' rel='noreferrer'>this Youtube video</a>.
 
 ## How To Play
 
@@ -42,3 +45,8 @@ Use Sound - https://www.npmjs.com/package/use-sound
 ### UI
 
 No fancy UI frameworks were used! It was all custom-written code by yours truly 💙
+
+## Disclaimer
+
+I do not own the theme music or the idea behind this game. This was re-created for learning
+purposes only.
