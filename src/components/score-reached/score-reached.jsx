@@ -1,14 +1,21 @@
 import { useEffect } from 'react';
 import confetti from 'canvas-confetti';
 import { animateCSS } from '../../exports/functions';
+import useSound from 'use-sound';
+import YaySound from '../../assets/sounds/yay.mp3';
 import './score-reached.scss';
 import './score-reached.mobile.scss';
 
 function ScoreReached({ scoreReached, setShowScoreReached }) {
+  const [playYaySound] = useSound(YaySound);
+
   // Animate component into view, throw confetti, then animate out
   useEffect(() => {
     // Throw confetti
     confetti({ particleCount: 100, spread: 70, origin: { y: 0.3 } });
+
+    // Play yay sound
+    playYaySound();
 
     // Fade in
     animateCSS('.score-reached', 'fadeInDown', true).then(() => {
@@ -24,7 +31,7 @@ function ScoreReached({ scoreReached, setShowScoreReached }) {
         2500
       );
     });
-  }, [setShowScoreReached]);
+  }, [setShowScoreReached, playYaySound]);
 
   return (
     <div className="score-reached">
