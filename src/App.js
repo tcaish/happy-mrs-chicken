@@ -12,11 +12,12 @@ import ChickenMouthClosedImage from './assets/images/chicken-mouth-closed.png';
 import ChickenMouthOpenImage from './assets/images/chicken-mouth-open.png';
 import PlayButton from './components/play-button/play-button';
 import SoundButton from './components/sound-button/sound-button';
+import Footer from './components/footer/footer';
 import useSound from 'use-sound';
 import './App.scss';
 import './exports/animations.scss';
 import 'animate.css';
-import Footer from './components/footer/footer';
+import ScoreReached from './components/score-reached/score-reached';
 
 function App() {
   const [playThemeSong, themeSongMethods] = useSound(ThemeSong, {
@@ -37,12 +38,16 @@ function App() {
   const [eggs, setEggs] = useState([]);
 
   // Scoreboard states
-  const [score, setScore] = useState(0);
-  const [scoreText, setScoreText] = useState('000');
+  const [score, setScore] = useState(49);
+  const [scoreText, setScoreText] = useState('049');
 
   // Play button states
   const [canClickPlayButton, setCanClickPlayButton] = useState(false);
   const [playButtonClicked, setPlayButtonClicked] = useState(false);
+
+  // Score reached states
+  const [showScoreReached, setShowScoreReached] = useState(false);
+  const [scoreReached, setScoreReached] = useState(0);
 
   // Sound button states
   const [soundOn, setSoundOn] = useState(true);
@@ -111,6 +116,11 @@ function App() {
     else setScoreText(`${newScore}`);
 
     setScore(newScore);
+
+    if (newScore % 50 === 0) {
+      setScoreReached(newScore);
+      setShowScoreReached(true);
+    }
   }
 
   // Handles what happens when the user clicks within the page
@@ -167,6 +177,13 @@ function App() {
       <SoundButton soundOn={soundOn} setSoundOn={setSoundOn} />
 
       <Footer />
+
+      {showScoreReached && (
+        <ScoreReached
+          scoreReached={scoreReached}
+          setShowScoreReached={setShowScoreReached}
+        />
+      )}
     </div>
   );
 }

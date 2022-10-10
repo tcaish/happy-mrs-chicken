@@ -1,0 +1,23 @@
+.score-reached {
+  color: rgba(255, 255, 255, 0.897);
+  position: absolute;
+  text-align: center;
+  top: 50px;
+  width: 100%;
+
+  .score-reached-text-container {
+    background-color: rgb(0, 0, 0, 0.3);
+    border-radius: 25px;
+    margin: 0 auto;
+    padding: 2px 20px;
+    width: fit-content;
+  }
+
+  h1 {
+    margin-bottom: unset;
+  }
+
+  h2 {
+    margin-top: 5px;
+  }
+}
