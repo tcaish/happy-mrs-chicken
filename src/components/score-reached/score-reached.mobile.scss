@@ -1,0 +1,12 @@
+// Screen width 576px and under
+@media only screen and (max-width: 576px) {
+  .score-reached {
+    h1 {
+      font-size: x-large;
+    }
+
+    h2 {
+      font-size: large;
+    }
+  }
+}

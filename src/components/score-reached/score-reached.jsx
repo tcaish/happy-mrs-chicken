@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import confetti from 'canvas-confetti';
 import { animateCSS } from '../../exports/functions';
 import './score-reached.scss';
+import './score-reached.mobile.scss';
 
 function ScoreReached({ scoreReached, setShowScoreReached }) {
   // Animate component into view, throw confetti, then animate out

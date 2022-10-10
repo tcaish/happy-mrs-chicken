@@ -23,7 +23,7 @@ N/a
 
 ### Backend
 
-Netlify - https://netlify.app<br/>
+Netlify - https://netlify.app
 
 ### Styling
 
@@ -31,8 +31,10 @@ SASS
 
 ### Third-Party
 
-Animate.css - https://animate.style/
+Animate.css - https://animate.style/<br/>
+Canvas Confetti - https://www.npmjs.com/package/canvas-confetti<br/>
+Party Confetti Font - https://www.fontspace.com/party-confetti-font-f69513<br/>
 
 ### UI
 
-Bootstrap - https://react-bootstrap.github.io<br/>
+No fancy UI frameworks were used! All custom-written SASS made by yours truly.
