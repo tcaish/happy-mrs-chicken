@@ -153,9 +153,6 @@ function App() {
       {eggs.map((egg) => egg)}
       {babyChickens.map((babyChicken) => babyChicken)}
 
-      <Scoreboard firstLoad={firstLoad} scoreText={scoreText} />
-      <SoundButton soundOn={soundOn} setSoundOn={setSoundOn} />
-
       <Chicken firstLoad={firstLoad} chickenImage={chickenImage} />
 
       {!playButtonClicked && (
@@ -165,6 +162,9 @@ function App() {
           canClickPlayButton={canClickPlayButton}
         />
       )}
+
+      <Scoreboard firstLoad={firstLoad} scoreText={scoreText} />
+      <SoundButton soundOn={soundOn} setSoundOn={setSoundOn} />
 
       <Footer />
     </div>
