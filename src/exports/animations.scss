@@ -8,7 +8,7 @@
   --egg-wobble-delay: 1s;
   --egg-wobble-iteration: 3;
 
-  --move-off-screen-direction: 100vw;
+  --move-off-screen-direction: 60vw;
 }
 
 @keyframes jump {
@@ -102,7 +102,7 @@
 
 .grow-and-move-off-screen {
   animation-name: grow-and-move-off-screen;
-  animation-duration: 10s;
+  animation-duration: 7s;
   animation-delay: calc(
     var(--egg-wobble-duration) * var(--egg-wobble-iteration) +
       var(--egg-wobble-delay)
