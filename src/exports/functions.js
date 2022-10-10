@@ -56,8 +56,12 @@ export const moveChickenToRandomLocationAndLayEgg = (
   chicken.style.setProperty('--chicken-vertical', `${randomVertical}px`);
   chicken.style.setProperty('--chicken-horizontal', `${randomHorizontal}px`);
 
-  const style = {
+  const eggStyle = {
     top: `${randomVertical + 46}px`,
+    left: `${randomHorizontal + 43}px`
+  };
+  const babyChickenStyle = {
+    top: `${randomVertical + 46 + 23}px`,
     left: `${randomHorizontal + 43}px`
   };
 
@@ -65,7 +69,7 @@ export const moveChickenToRandomLocationAndLayEgg = (
   const newEggsLength = eggs.length + 1;
   setEggs([
     ...eggs,
-    <Egg key={newEggsLength} id={`egg-${newEggsLength}`} style={style} />
+    <Egg key={newEggsLength} id={`egg-${newEggsLength}`} style={eggStyle} />
   ]);
 
   // Spawn baby chicken
@@ -75,7 +79,7 @@ export const moveChickenToRandomLocationAndLayEgg = (
     <BabyChicken
       key={newBabyChickensLength}
       id={`baby-chicken-${newBabyChickensLength}`}
-      style={style}
+      style={babyChickenStyle}
     />
   ]);
 };
