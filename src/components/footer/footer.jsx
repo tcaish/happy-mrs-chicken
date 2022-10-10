@@ -16,13 +16,19 @@ function Footer() {
 
   return (
     <div className="footer">
-      <p className="footer-instructions">
+      <p className="footer-instructions mb5">
         Click the play button, then click anywhere in the browser window to
         play.
       </p>
-      <p className="footer-disclaimer">
+      <p className="no-margin-top mb5">
         We do not own the theme music or the idea behind this game. This was
         re-created for learning purposes.
+      </p>
+      <p className="no-margin-top">
+        Built with 💙 by{' '}
+        <a href="https://github.com/tcaish" target="_blank" rel="noreferrer">
+          tcaish
+        </a>
       </p>
     </div>
   );
