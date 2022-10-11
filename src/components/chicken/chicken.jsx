@@ -11,7 +11,7 @@ function Chicken({ firstLoad, chickenImage }) {
       // width of chicken / 2 to get it in the middle
       chicken.style.setProperty(
         '--chicken-vertical',
-        `${window.innerHeight / 2 - 145.88 / 2}px`
+        `${window.innerHeight / 2 - 145.88 / 2 - 40}px`
       );
       chicken.style.setProperty(
         '--chicken-horizontal',

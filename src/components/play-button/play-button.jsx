@@ -12,7 +12,7 @@ function PlayButton({ firstLoad, setPlayButtonClicked, canClickPlayButton }) {
       // chicken
       playButton.style.setProperty(
         'top',
-        `${window.innerHeight / 2 - 86 / 2 + 125}px`
+        `${window.innerHeight / 2 - 86 / 2 + 90}px`
       );
       playButton.style.setProperty(
         'left',
