@@ -46,6 +46,24 @@ export const moveChickenToRandomLocationAndLayEgg = (
     ];
   }
 
+  // Returns the styling for the baby chicken given the vertical and horizontal
+  // positioning.
+  function getBabyChickenStyle(vertical, horizontal) {
+    const screenWidth = window.innerWidth;
+    let topAdj = 46 + 23;
+    let leftAdj = 43;
+
+    if (screenWidth <= 576) {
+      topAdj = 46 + 17;
+      leftAdj = 40;
+    }
+
+    return {
+      top: `${vertical + topAdj}px`,
+      left: `${horizontal + leftAdj}px`
+    };
+  }
+
   let [randomVertical, randomHorizontal] = getRandomLocations();
 
   // Get new random locations so we don't collide with scoreboard
@@ -60,10 +78,10 @@ export const moveChickenToRandomLocationAndLayEgg = (
     top: `${randomVertical + 46}px`,
     left: `${randomHorizontal + 43}px`
   };
-  const babyChickenStyle = {
-    top: `${randomVertical + 46 + 23}px`,
-    left: `${randomHorizontal + 43}px`
-  };
+  const babyChickenStyle = getBabyChickenStyle(
+    randomVertical,
+    randomHorizontal
+  );
 
   // Lay egg at same location as chicken
   const newEggsLength = eggs.length + 1;

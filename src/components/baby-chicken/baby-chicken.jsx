@@ -3,6 +3,7 @@ import BabyChickenMouthClosedImage from '../../assets/images/baby-chicken-mouth-
 import BabyChickenMouthOpenImage from '../../assets/images/baby-chicken-mouth-open.png';
 import { isBabyChickenOnLeftSide } from '../../exports/functions';
 import './baby-chicken.scss';
+import './baby-chicken.mobile.scss';
 
 function BabyChicken(props) {
   const interval = useRef(null);
@@ -24,8 +25,6 @@ function BabyChicken(props) {
   // Animates the baby chicken by making it grow and moving it off the screen
   function animateBabyChicken(babyId) {
     const babyChicken = document.querySelector(babyId);
-
-    if (!babyChicken) return;
 
     let moveDirection = '70vw'; // Move to the right off-screen
     let lookDirection = '180deg'; // Baby chicken looks to right side
