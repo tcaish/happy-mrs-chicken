@@ -73,7 +73,7 @@ export const moveChickenToRandomLocationAndLayEgg = (
 
     if (screenWidth <= 576) {
       topAdj = 46 + 17;
-      leftAdj = 40;
+      leftAdj = 38;
     }
 
     return {
