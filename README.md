@@ -31,6 +31,7 @@ you will be congratulated!
 
 ### Backend
 
+Firebase Analytics - https://firebase.google.com<br/>
 Netlify - https://netlify.app
 
 ### Styling
