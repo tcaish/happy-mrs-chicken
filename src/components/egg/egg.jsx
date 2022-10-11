@@ -3,8 +3,8 @@ import useSound from 'use-sound';
 import { animateCSS } from '../../exports/functions';
 import HatchSound from '../../assets/sounds/hatch.mp3';
 import BabyChirpSound from '../../assets/sounds/baby-chicken-chirp.mp3';
-
 import './egg.scss';
+import './egg.mobile.scss';
 
 function Egg(props) {
   const [playHatchSound] = useSound(HatchSound);
