@@ -36,7 +36,7 @@ function ScoreReached({ scoreReached, setShowScoreReached }) {
   return (
     <div className="score-reached">
       <div className="score-reached-text-container">
-        <h1>You're up to {scoreReached} eggs laid 🎉</h1>
+        <h1>You've laid {scoreReached} eggs 🎉</h1>
         <h2>Keep it up!</h2>
       </div>
     </div>
