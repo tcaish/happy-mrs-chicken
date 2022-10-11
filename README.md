@@ -9,19 +9,20 @@ show off my React skills!
 
 ## Demo
 
-<a href='https://happy-mrs-chicken-game.netlify.app' target='_blank'>https://happy-mrs-chicken-game.netlify.app</a>
+[https://happy-mrs-chicken-game.netlify.app](https://happy-mrs-chicken-game.netlify.app)
 
-To see the real game as made by the original creators, view 
-<a href='https://youtu.be/18vbpsOil_U?t=43' target='_blank'>this Youtube video</a>.
+To see the real game as made by the original creators, view
+[this Youtube video](https://youtu.be/18vbpsOil_U?t=43).
 
 ## How To Play
 
-First, click the play button. Then, click anywhere in the browser window to see the chicken lay an egg 
+First, click the play button. Then, click anywhere in the browser window to see the chicken lay an egg
 and move around the screen. The whole point of the game is to watch the chicken lay as many eggs as you
 have the time for while it keeps track of how many eggs were laid. With every additional 50 eggs laid,
 you will be congratulated!
 
 ## Things I'd Like to Add/Update/Change
+
 - Update the egg to show it hatching before disappearing rather than it just disappearing
 - Figure out a way to remove the baby chickens from the DOM without causing a crash
 - Allow for user to click and have immediate response rather than there being a small wait between clicks
@@ -49,5 +50,4 @@ No fancy UI frameworks were used! It was all custom-written code by yours truly 
 
 ## Disclaimer
 
-I do not own the theme music or the idea behind this game. This was re-created for learning
-purposes only.
+I do not own the theme music or the idea behind this game. This was re-created for learning purposes only.
