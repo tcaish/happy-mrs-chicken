@@ -1,8 +1,10 @@
 // Screen width 576px and under
 @media only screen and (max-width: 576px) {
   .scoreboard {
+    border-radius: 100px / 65px;
+    padding-top: 2px;
     right: 20px;
-    width: 120px;
+    width: 110px;
 
     span {
       font-size: 35px;
