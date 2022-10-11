@@ -100,3 +100,8 @@ export function isBabyChickenOnLeftSide(styleLeft) {
   const styleLeftNumber = parseFloat(styleLeft.split('px')[0]);
   return styleLeftNumber <= halfOfScreenWidth;
 }
+
+// This checks if the current device is a mobile phone
+export function isUserOnMobileDevice() {
+  return /Android|iPhone/i.test(navigator.userAgent);
+}

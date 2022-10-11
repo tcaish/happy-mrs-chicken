@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import './footer.scss';
 import './footer.mobile.scss';
+import { isUserOnMobileDevice } from '../../exports/functions';
 
 function Footer() {
   useEffect(() => {
@@ -18,12 +19,13 @@ function Footer() {
   return (
     <div className="footer">
       <p className="footer-instructions mb5">
-        Click the play button, then click anywhere in the browser window to
-        play.
+        {isUserOnMobileDevice()
+          ? 'Tap the play button, then tap anywhere in the browser window to play.'
+          : 'Click the play button, then click anywhere in the browser window to play.'}
       </p>
       <p className="no-margin-top mb5">
         We do not own the theme music or the idea behind this game. This was
-        re-created for learning purposes.
+        re-created for learning purposes only.
       </p>
       <p className="no-margin-top">
         Built with 💙 by{' '}
